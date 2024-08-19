@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   resources :organization do 
     resources :memberships
   end
+  
+  resources :profiles, only: [:new, :create, :show, :edit, :update]
 
+  
 
   root 'home#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

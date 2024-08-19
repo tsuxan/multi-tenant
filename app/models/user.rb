@@ -7,4 +7,5 @@ class User < ApplicationRecord
          has_many :membership
          has_many :organization , through: :membership
          has_many :blogs, dependent: :destroy 
+         has_one :profile, dependent: :destroy
 end

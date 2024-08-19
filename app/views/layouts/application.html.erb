@@ -16,7 +16,10 @@
     <% if user_signed_in? %>
       <%= link_to 'View Blogs', blogs_path %>
       <%= link_to 'Add New Blog', new_blog_path %>
-      
+      <%# link_to 'My Profile', profiles_path(current_user.profile)%>
+      <% if !current_user.profile.nil? %>
+      <%= link_to 'My Profile', profile_path(current_user.profile) %>
+        <%end%>
       <%= link_to 'Logout', destroy_user_session_path, method: :delete , data:{ turbo_method: :delete} %>
     <% else %>
       <%= link_to 'Login', new_user_session_path %>

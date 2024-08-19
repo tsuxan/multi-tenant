@@ -11,14 +11,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if @user.save
       if organization.present?
         @user.membership.create(organization_id: @organization.id)
-        redirect_to root_path
         flash[:notice] = "Your account has been created.Log In to continue"
+        redirect_to root_path
       else
         flash[:notice] = "Registration failed.Try with another email or organization"
         render :new
       end
     else
-      flash[:notice] =  "Registration fail"
+      flash[:alert] =  "Registration fail"
       render :new
 
     end
@@ -28,7 +28,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
      
     def sign_up_params
       # params.require(:sign_up).permit( :email, :password, :password_confirmation ,:organization_id )
-      params.require(:user).permit(:email, :password, :password_confirmation, :organization_id)
+      params.require(:user).permit(:email, :password, :password_confirmation).merge(params[organization_id])
       end 
 
     def organization
