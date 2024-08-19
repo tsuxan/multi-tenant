@@ -12,6 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       if organization.present?
         @user.membership.create(organization_id: @organization.id)
         redirect_to root_path
+        flash[:notice] = "Your account has been created.Log In to continue"
       else
         flash[:notice] = "Registration failed.Try with another email or organization"
         render :new

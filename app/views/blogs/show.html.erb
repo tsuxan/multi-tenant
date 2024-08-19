@@ -1,4 +1,4 @@
-<p style="color: green"><%= notice %></p>
+ <h1> <%= @blog.title %> </h1>
 
 <%= render @blog %>
 
@@ -6,5 +6,21 @@
   <%= link_to "Edit this blog", edit_blog_path(@blog) %> |
   <%= link_to "Back to blogs", blogs_path %>
 
-  <%= button_to "Destroy this blog", @blog, method: :delete %>
+  <%= button_to "Destroy this blog", @blog, method: :delete, data: {
+    turbo_method: :delete,
+    turbo_confirm: "Are you sure?"} %>
+</div>
+
+<div>
+<%= render @blog.comments%>
+
+  <h2> Add a Comment </h2>
+  <%= render partial: 'comments/form', locals: { blog: @blog } %>
+
+</div>
+
+<h2>Comments</h2>
+<div>
+    
+
 </div>

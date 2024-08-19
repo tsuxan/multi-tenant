@@ -2,10 +2,14 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: "users/registrations", sessions: "users/sessions"}
             
 
-  resources :blogs
+  resources :blogs do
+    resources :comments, only: [:create, :update, :destroy]
+  end  
+  
   resources :organization do 
     resources :memberships
   end
+
 
   root 'home#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
