@@ -1,5 +1,11 @@
 <h1>Edit My Profiles</h1>
 <%= form_with(model: @profile, local: true) do |form| %>
+
+    <div class="input_field">
+        <%= form.label :image %>
+        <%= form.file_field :image%>
+    </div>
+
     <div class="field">
         <%= form.label :full_name %>
         <%= form.text_field :full_name %>

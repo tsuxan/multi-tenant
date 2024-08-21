@@ -11,9 +11,14 @@
         </div>
     <% end %>
     
+    <div class="input_field">
+        <%= form.label :image %>
+        <%= form.files_field :image%>
+    </div>
+
     <div class="field">
-        <%= form.label :full_name %>
-        <%= form.text_field :full_name, required: true%>
+    <%= form.label :full_name %>
+    <%= form.text_field :full_name, required: true%>
     </div>
 
     <div class="field">
