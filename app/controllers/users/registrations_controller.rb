@@ -27,8 +27,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
      
     def sign_up_params
-      # params.require(:sign_up).permit( :email, :password, :password_confirmation ,:organization_id )
-      params.require(:user).permit(:email, :password, :password_confirmation).merge(params[organization_id])
+      params.require(:user).permit( :email, :password, :password_confirmation ,:organization_id )
+      # params.require(:user).permit(:email, :password, :password_confirmation).merge(params[organization_id])
       end 
 
     def organization

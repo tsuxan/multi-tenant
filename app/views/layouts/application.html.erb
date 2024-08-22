@@ -21,10 +21,16 @@
           <%= link_to 'My Profile', profile_path(current_user.profile) %>
         <%end%>
         <%= link_to 'Logout', destroy_user_session_path, method: :delete , data:{ turbo_method: :delete} %>
-        <% profile = Profile.find_by(id: current_user.profile.id)%>
-        <% if profile.image.attached? %>
-          <%= image_tag(profile.image, style: "height: 50px; border-radius: 25px") %>
-        <% end %>
+        <%if !Profile.find_by(user_id: current_user.id).nil?%>
+          <% profile = Profile.find_by(id: current_user.profile.id)%>
+          <% if profile.image.attached? %>
+            <%= image_tag(profile.image, style: "height: 50px; border-radius: 25px") %>
+          <% else%>
+            <%= image_tag('default.jpg',style: "height: 50px; border-radius: 25px") %>
+          <% end %>
+         <%else%>
+          <%= link_to 'Create Profile', new_profile_path %>
+        <%end%>
       <% else %>
         <%= link_to 'Login', new_user_session_path %>
         <%= link_to 'Sign Up', new_user_registration_path %>
