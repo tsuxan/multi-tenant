@@ -8,4 +8,5 @@ class User < ApplicationRecord
          has_many :organization , through: :membership
          has_many :blogs, dependent: :destroy 
          has_one :profile, dependent: :destroy
+         has_many :comments
 end

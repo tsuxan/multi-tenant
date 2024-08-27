@@ -7,6 +7,8 @@ module Types
     field :comment, resolver: Resolvers::CommentResolver
     field :user, resolver: Resolvers::UserResolver
     field :profile, resolver: Resolvers::ProfileResolver
+    field :organization, resolver: Resolvers::OrganizationResolver
+    field :membership, resolver: Resolvers::MembershipResolver
 
     field :node, Types::NodeType, null: true, description: "Fetches an object given its ID." do
       argument :id, ID, required: true, description: "ID of the object."

@@ -6,6 +6,7 @@ module Types
     field :commenter, String
     field :body, String
     field :blog_id, Integer, null: false
+    field :user_id, Integer, null: false
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
   end
